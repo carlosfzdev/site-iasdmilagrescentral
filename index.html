@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Igreja Adventista do Sétimo Dia - Central Milagres (CE). Informações sobre cultos, programação, localização e contato." />
+    <title>IASD Central Milagres - CE</title>
+    <link rel="stylesheet" href="essencials/style.css">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/DgkWPyfP/229133089-411187380321827-5405016350897760058-n.jpg" />
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="brand">
+                <img src="https://i.ibb.co/DgkWPyfP/229133089-411187380321827-5405016350897760058-n.jpg" alt="Logo IASD" class="logo">
+                <h1>Igreja Adventista do Sétimo Dia - Milagres (Central)</h1>
+            </div>
+
+            <button id="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">☰</button>
+
+            <nav id="site-nav" role="navigation">
+                <ul>
+                    <li><a href="#culto">Cultos</a></li>
+                    <li><a href="#programacoes">Programações</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#local">Local</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="hero">
+            <img src="images/fotoigreja.png" alt="Fachada da igreja" class="hero-image">
+            <div class="hero-content">
+                <h2>Bem-vindo à IASD Central Milagres</h2>
+                <p>Junte-se a nós nos cultos e atividades — todos são bem-vindos.</p>
+                <a class="btn" href="#contato">Fale Conosco</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="culto" aria-labelledby="culto-title">
+            <h2 id="culto-title">Cultos</h2>
+            <p>Nossos cultos acontecem semanalmente em horários práticos para a comunidade.</p>
+            <ul>
+                <li>Domingo: 19:30</li>
+                <li>Quarta-feira: 19:30</li>
+                <li>Sábado: 08:30</li>
+            </ul>
+        </section>
+
+        <section id="programacoes" aria-labelledby="programacoes-title">
+            <h2 id="programacoes-title">Programações</h2>
+            <p>Confira aqui as programações e eventos especiais.</p>
+            <ul id="lista-programacoes">
+                <li>Nenhuma programação atual</li>
+            </ul>
+        </section>
+
+        <section id="sobre" aria-labelledby="sobre-title">
+            <h2 id="sobre-title">Sobre Nós</h2>
+            <p>A IASD Central Milagres é uma comunidade cristã comprometida em transmitir esperança e serviço ao próximo.</p>
+            <p>Nossa missão é anunciar o evangelho, servir a comunidade e preparar corações para a volta de Jesus.</p>
+        </section>
+
+        <section id="local" aria-labelledby="local-title">
+            <h2 id="local-title">Localização</h2>
+            <p>Av. Lacordaire Ferreira Lins, S/N - Das Missionárias | Milagres - CE, 63250-000</p>
+            <p><a href="https://www.google.com/maps/search/?api=1&query=Av.+Lacordaire+Ferreira+Lins+Milagres+CE" target="_blank" rel="noopener">Abrir no Google Maps</a></p>
+        </section>
+
+        <section id="contato" aria-labelledby="contato-title">
+            <h2 id="contato-title">Contato</h2>
+            <form id="contato-form">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+            <p id="resposta" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 IASD Central Milagres — Todos os direitos reservados.</p>
+            <p><a href="#">Política de Privacidade</a></p>
+        </div>
+    </footer>
+
+    <script src="essencials/script.js"></script>
+</body>
+</html>
+
+
