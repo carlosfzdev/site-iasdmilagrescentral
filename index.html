@@ -4,94 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Igreja Adventista do Sétimo Dia - Central Milagres (CE). Informações sobre cultos, programação, localização e contato." />
+    <meta name="theme-color" content="#2a6f9e">
     <title>IASD Central Milagres - CE</title>
     <link rel="stylesheet" href="essencials/style.css">
     <link rel="icon" type="image/png" href="https://i.ibb.co/DgkWPyfP/229133089-411187380321827-5405016350897760058-n.jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+	<a class="pular-link" href="#principal">Ir para o conteúdo</a>
     <header>
-        <div class="container header-inner">
-            <div class="brand">
+        <div class="container cabecalho-interno">
+            <div class="marca">
                 <img src="https://i.ibb.co/DgkWPyfP/229133089-411187380321827-5405016350897760058-n.jpg" alt="Logo IASD" class="logo">
-                <h1>Igreja Adventista do Sétimo Dia - Milagres (Central)</h1>
+                <h1 class="nome-site">Igreja Adventista do Sétimo Dia<span class="h1-subtitulo"> - Milagres (Central)</span></h1>
             </div>
 
-            <button id="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">☰</button>
+            <button id="menu-alternar" aria-expanded="false" aria-controls="navegacao-site" aria-label="Abrir menu">☰</button>
 
-            <nav id="site-nav" role="navigation">
+            <nav id="navegacao-site" role="navigation">
                 <ul>
-                    <li><a href="#culto">Cultos</a></li>
-                    <li><a href="#programacoes">Programações</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#local">Local</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="essencials/cultos.html">Cultos</a></li>
+                    <li><a href="essencials/sobre.html">Sobre</a></li>
+                    <li><a href="essencials/local.html">Local</a></li>
+                    <li><a href="essencials/imagens.html">Imagens</a></li>
+                    <li><a href="essencials/contato.html">Contato</a></li>
+                    <li><a href="https://giving.7me.app/guest-donation/church/698ead37-327b-4888-be88-ed64d2495e3e" target="_blank" rel="noopener">Dízimos e Ofertas</a></li>
                 </ul>
             </nav>
+            <button id="tema-alternar" aria-label="Alternar tema">🌙</button>
         </div>
 
-        <div class="hero">
-            <img src="images/fotoigreja.png" alt="Fachada da igreja" class="hero-image">
-            <div class="hero-content">
+        <div class="destaque revelar">
+            <img src="images/fotoigreja.png" alt="Fachada da igreja" class="destaque-imagem paralaxe" loading="lazy">
+            <div class="destaque-conteudo revelar" data-delay="120">
                 <h2>Bem-vindo à IASD Central-Milagres CE</h2>
                 <p>Junte-se a nós nos cultos e atividades — todos são bem-vindos.</p>
-                <a class="btn" href="#contato">Fale Conosco</a>
+                <a class="btn" href="essencials/contato.html">Fale Conosco</a>
             </div>
         </div>
     </header>
 
-    <main>
-        <section id="culto" aria-labelledby="culto-title">
-            <h2 id="culto-title">Cultos</h2>
-            <p>Nossos cultos acontecem semanalmente em horários práticos para a comunidade.</p>
-            <ul>
-                <li>Domingo: 19:30</li>
-                <li>Quarta-feira: 19:30</li>
-                <li>Sábado: 08:30</li>
-            </ul>
+    <main id="principal">
+        <section class="grade-links container">
+            <h2>Explore</h2>
+            <div class="cartoes">
+                <a class="cartao revelar" href="essencials/cultos.html" data-delay="80"><span class="cartao-icone">🙏</span><h3>Cultos</h3><p class="cartao-subtitulo">Horários e informações</p></a>
+                <a class="cartao revelar" href="essencials/sobre.html" data-delay="160"><span class="cartao-icone">⛪</span><h3>Sobre Nós</h3><p class="cartao-subtitulo">Nossa missão e história</p></a>
+                <a class="cartao revelar" href="essencials/local.html" data-delay="200"><span class="cartao-icone">📍</span><h3>Localização</h3><p class="cartao-subtitulo">Encontre nossa igreja</p></a>
+                <a class="cartao revelar" href="essencials/imagens.html" data-delay="240"><span class="cartao-icone">🖼️</span><h3>Imagens</h3><p class="cartao-subtitulo">Galeria de fotos</p></a>
+                <a class="cartao revelar" href="essencials/contato.html" data-delay="280"><span class="cartao-icone">✉️</span><h3>Contato</h3><p class="cartao-subtitulo">Fale conosco</p></a>
+                <a class="cartao revelar" href="https://giving.7me.app/guest-donation/church/698ead37-327b-4888-be88-ed64d2495e3e" target="_blank" rel="noopener" data-delay="320"><span class="cartao-icone">❤️</span><h3>Dízimos e Ofertas</h3><p class="cartao-subtitulo">Contribua com a obra</p></a>
+            </div>
         </section>
 
-        <section id="programacoes" aria-labelledby="programacoes-title">
-            <h2 id="programacoes-title">Programações</h2>
-            <p>Confira aqui as programações e eventos especiais.</p>
-            <ul id="lista-programacoes">
-                <li>Nenhuma programação atual</li>
-            </ul>
-        </section>
-
-        <section id="sobre" aria-labelledby="sobre-title">
-            <h2 id="sobre-title">Sobre Nós</h2>
-            <p>A IASD Central Milagres é uma comunidade cristã comprometida em transmitir esperança e serviço ao próximo.</p>
-            <p>Nossa missão é anunciar o evangelho, servir a comunidade e preparar corações para a volta de Jesus.</p>
-        </section>
-
-        <section id="local" aria-labelledby="local-title">
-            <h2 id="local-title">Localização</h2>
-            <p>Av. Lacordaire Ferreira Lins, S/N - Das Missionárias | Milagres - CE, 63250-000</p>
-            <p><a href="https://maps.app.goo.gl/c1v6LkrhrPVS8XDD6" target="_blank" rel="noopener">Abrir no Google Maps</a></p>
-        </section>
-
-        <section id="contato" aria-labelledby="contato-title">
-            <h2 id="contato-title">Contato</h2>
-            <form id="contato-form">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" required>
-
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="mensagem">Mensagem</label>
-                <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
-
-                <button type="submit">Enviar</button>
-            </form>
-            <p id="resposta" aria-live="polite"></p>
+        <section class="secao-doacoes container revelar" data-delay="360">
+            <img src="https://giving.7me.app/assets/images/logo.png" alt="7me Giving Logo" class="logo-doacoes">
+            <h2>Dízimos e Ofertas</h2>
+            <p>Sua contribuição ajuda a manter nossa igreja e a expandir a obra de Deus em nossa comunidade. Agradecemos sua generosidade.</p>
+            <a href="https://giving.7me.app/guest-donation/church/698ead37-327b-4888-be88-ed64d2495e3e" class="btn" target="_blank" rel="noopener">Ofertar Agora</a>
         </section>
     </main>
 
     <footer>
         <div class="container">
             <p>&copy; 2025 IASD Central Milagres — Todos os direitos reservados.</p>
-            <p><a href="#">Política de Privacidade</a></p>
+            <p><a href="essencials/politica-de-privacidade.html">Política de Privacidade</a></p>
         </div>
     </footer>
 
