@@ -17,7 +17,7 @@
 
 ::selection {
   background-color: #002699;
-  color: #000;
+  color: #ffffff;
 }
 
 [data-theme="dark"] {
@@ -307,6 +307,7 @@ main.container section a:hover {
   transform: scale(1.05);
   box-shadow: var(--shadow-2);
 }
+
 
 
 
