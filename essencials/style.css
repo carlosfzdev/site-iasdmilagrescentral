@@ -20,6 +20,20 @@
   color: #ffffff;
 }
 
+.texto-hover {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
 [data-theme="dark"] {
   --bg: #111827;
   --surface: #1f2937;
@@ -307,6 +321,7 @@ main.container section a:hover {
   transform: scale(1.05);
   box-shadow: var(--shadow-2);
 }
+
 
 
 
