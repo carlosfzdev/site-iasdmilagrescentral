@@ -51,7 +51,31 @@ body{
 }
 .pular-link:focus{transform:none;outline:3px solid rgba(37,99,235,0.18)}
 
-.container{max-width:var(--container);margin:0 auto;padding:1.25rem}
+.galeria-item {
+  position: relative;
+  display: block; 
+  overflow: hidden;
+}
+
+.galeria-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.galeria-item .overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 1rem;
+  text-align: center;
+}
+
 
 .cabecalho-interno{
   display:flex;align-items:center;justify-content:space-between;gap:var(--gap);
@@ -307,6 +331,7 @@ main.container section a:hover {
   transform: scale(1.05);
   box-shadow: var(--shadow-2);
 }
+
 
 
 
