@@ -47,11 +47,6 @@ body{
   transition: background .3s, color .3s;
 }
 
-.pular-link{
-  position:absolute;left:8px;top:8px;padding:0.4rem 0.6rem;background:var(--primary);color:#fff;border-radius:6px;z-index:999;transform:translateY(-120%);transition:transform .18s;
-}
-.pular-link:focus{transform:none;outline:3px solid rgba(37,99,235,0.18)}
-
 .container{max-width:var(--container);margin:0 auto;padding:1.25rem}
 
 .cabecalho-interno{
