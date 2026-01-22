@@ -304,15 +304,6 @@ main.container section a:hover {
   box-shadow: var(--shadow-2);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+.links {
+  list-style: none;
+}
