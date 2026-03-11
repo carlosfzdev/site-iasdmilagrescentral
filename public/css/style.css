@@ -316,3 +316,173 @@ main.container section a:hover {
 .links {
   list-style: none;
 }
+
+.secao-auth, .secao-perfil {
+  background: var(--surface);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-1);
+}
+
+.texto-intro {
+  margin: 0.25rem 0 1.25rem 0;
+  color: var(--text-muted-darker);
+}
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.auth-col h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.auth-col form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.auth-col label,
+.secao-perfil label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.auth-col input,
+.secao-perfil input {
+  padding: 0.7rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+[data-theme="dark"] .auth-col input,
+[data-theme="dark"] .secao-perfil input {
+  border-color: #4b5563;
+}
+
+.auth-col button,
+.secao-perfil button {
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.3rem;
+  background: var(--primary);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s, transform .12s;
+}
+
+.auth-col button:hover,
+.secao-perfil button:hover {
+  background: var(--primary-600);
+  transform: translateY(-1px);
+}
+
+.auth-mensagem {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.auth-mensagem.sucesso {
+  color: #15803d;
+}
+
+.auth-mensagem.erro {
+  color: #b91c1c;
+}
+
+.perfil-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  gap: 1.75rem;
+  margin-top: 1.25rem;
+}
+
+.perfil-avatar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.perfil-avatar {
+  width: 132px;
+  height: 132px;
+  border-radius: 999px;
+  object-fit: cover;
+  box-shadow: var(--shadow-2);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px dashed rgba(37, 99, 235, 0.4);
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--primary-600);
+  background: rgba(37, 99, 235, 0.04);
+}
+
+[data-theme="dark"] .btn-ghost {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.perfil-info {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--text-muted-darker);
+}
+
+.perfil-nome-resumo {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.perfil-igreja-resumo,
+.perfil-cargo-resumo {
+  font-size: 0.95rem;
+}
+
+.campo-ajuda {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.perfil-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.btn-secundario {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid #d1d5db;
+}
+
+[data-theme="dark"] .btn-secundario {
+  border-color: #4b5563;
+}
+
+@media (max-width: 768px) {
+  .perfil-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

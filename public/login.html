@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Área do Membro — IASD Central Milagres</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="https://i.ibb.co/DgkWPyfP/229133089-411187380321827-5405016350897760058-n.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container cabecalho-interno">
+      <div class="marca">
+        <a href="/."><img src="https://i.ibb.co/DgkWPyfP/229133089-411187380321827-5405016350897760058-n.jpg" alt="Logo" class="logo" draggable="false"></a>
+        <p class="nome-site"><a href="/.">IASD Central Milagres</a></p>
+      </div>
+      <button id="menu-alternar" aria-expanded="false" aria-controls="navegacao-site">☰</button>
+      <nav id="navegacao-site" role="navigation">
+        <ul>
+          <li><a href="/cultos">Cultos</a></li>
+          <li><a href="/sobre">Sobre</a></li>
+          <li><a href="/local">Local</a></li>
+          <li><a href="/imagens">Imagens</a></li>
+          <li><a href="/contato">Contato</a></li>
+          <li><a href="/login">Área do Membro</a></li>
+        </ul>
+      </nav>
+      <button id="tema-alternar" aria-label="Alternar tema">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section aria-labelledby="titulo-login" class="secao-auth">
+      <h1 id="titulo-login">Área do Membro</h1>
+      <p class="texto-intro">Acesse ou crie seu perfil para manter seus dados atualizados.</p>
+
+      <div class="auth-grid">
+        <div class="auth-col">
+          <h2>Entrar</h2>
+          <form id="form-login">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" required autocomplete="email">
+
+            <label for="login-senha">Senha</label>
+            <input type="password" id="login-senha" required autocomplete="current-password">
+
+            <button type="submit">Entrar</button>
+          </form>
+        </div>
+
+        <div class="auth-col">
+          <h2>Criar conta</h2>
+          <form id="form-registro">
+            <label for="reg-nome">Nome completo</label>
+            <input type="text" id="reg-nome" required autocomplete="name">
+
+            <label for="reg-email">Email</label>
+            <input type="email" id="reg-email" required autocomplete="email">
+
+            <label for="reg-senha">Senha</label>
+            <input type="password" id="reg-senha" required autocomplete="new-password" minlength="4">
+
+            <label for="reg-igreja">Igreja</label>
+            <input type="text" id="reg-igreja" placeholder="Ex: IASD Central Milagres" required>
+
+            <label for="reg-idade">Idade</label>
+            <input type="number" id="reg-idade" min="0" max="120" required>
+
+            <label for="reg-cargo">Cargo na igreja</label>
+            <input type="text" id="reg-cargo" placeholder="Ex: Ancião, Diácono, Jovem, Membro" required>
+
+            <button type="submit">Criar conta</button>
+          </form>
+        </div>
+      </div>
+
+      <p id="auth-mensagem" class="auth-mensagem" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p><a href="/.">Voltar à página inicial</a></p>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
+
