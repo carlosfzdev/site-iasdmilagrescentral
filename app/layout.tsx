@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -22,7 +23,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script src="/js/script.js" strategy="afterInteractive" />
+        <Script src="/js/auth.js" strategy="afterInteractive" />
+      </body>
     </html>
   );
 }
