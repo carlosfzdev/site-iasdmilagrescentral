@@ -1,41 +1,3 @@
-// Armazenamento simples em localStorage (apenas para demonstração).
-// Não utilizar este modelo como autenticação segura em produção.
-
-const STORAGE_USER_KEY = 'iasd_usuario';
-const STORAGE_SESSION_KEY = 'iasd_sessao';
-
-function salvarUsuario(usuario) {
-  localStorage.setItem(STORAGE_USER_KEY, JSON.stringify(usuario));
-}
-
-function obterUsuario() {
-  const raw = localStorage.getItem(STORAGE_USER_KEY);
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
-}
-
-function criarSessao(email) {
-  localStorage.setItem(STORAGE_SESSION_KEY, email);
-}
-
-function destruirSessao() {
-  localStorage.removeItem(STORAGE_SESSION_KEY);
-}
-
-function obterSessaoAtual() {
-  return localStorage.getItem(STORAGE_SESSION_KEY);
-}
-
-function redirecionarSeNaoLogado() {
-  if (!obterSessaoAtual()) {
-    window.location.href = '/login';
-  }
-}
-
 function mostrarMensagem(el, mensagem, tipo) {
   if (!el) return;
   el.textContent = mensagem;
@@ -47,32 +9,50 @@ function mostrarMensagem(el, mensagem, tipo) {
 document.addEventListener('DOMContentLoaded', function () {
   const authMensagem = document.getElementById('auth-mensagem');
 
+  async function api(path, options) {
+    const res = await fetch(path, {
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      ...options
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      const msg = data.message || 'Ocorreu um erro. Tente novamente.';
+      throw new Error(msg);
+    }
+    return data;
+  }
+
   // LOGIN
   const formLogin = document.getElementById('form-login');
   if (formLogin) {
-    formLogin.addEventListener('submit', function (e) {
+    formLogin.addEventListener('submit', async function (e) {
       e.preventDefault();
       const email = document.getElementById('login-email').value.trim().toLowerCase();
       const senha = document.getElementById('login-senha').value;
 
-      const usuario = obterUsuario();
-      if (!usuario || usuario.email !== email || usuario.senha !== senha) {
-        mostrarMensagem(authMensagem, 'Email ou senha inválidos.', 'erro');
-        return;
+      try {
+        mostrarMensagem(authMensagem, 'Entrando…', 'sucesso');
+        await api('/api/auth/login', {
+          method: 'POST',
+          body: JSON.stringify({ email, senha })
+        });
+        mostrarMensagem(authMensagem, 'Login realizado com sucesso! Redirecionando…', 'sucesso');
+        setTimeout(() => {
+          window.location.href = '/perfil';
+        }, 800);
+      } catch (err) {
+        mostrarMensagem(authMensagem, err.message, 'erro');
       }
-
-      criarSessao(usuario.email);
-      mostrarMensagem(authMensagem, 'Login realizado com sucesso! Redirecionando…', 'sucesso');
-      setTimeout(() => {
-        window.location.href = '/perfil';
-      }, 800);
     });
   }
 
   // REGISTRO
   const formRegistro = document.getElementById('form-registro');
   if (formRegistro) {
-    formRegistro.addEventListener('submit', function (e) {
+    formRegistro.addEventListener('submit', async function (e) {
       e.preventDefault();
       const nome = document.getElementById('reg-nome').value.trim();
       const email = document.getElementById('reg-email').value.trim().toLowerCase();
@@ -86,29 +66,20 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      const usuarioExistente = obterUsuario();
-      if (usuarioExistente && usuarioExistente.email === email) {
-        mostrarMensagem(authMensagem, 'Já existe um cadastro com este email.', 'erro');
-        return;
+      try {
+        mostrarMensagem(authMensagem, 'Criando conta…', 'sucesso');
+        await api('/api/auth/register', {
+          method: 'POST',
+          body: JSON.stringify({ nome, email, senha, igreja, idade, cargo })
+        });
+        mostrarMensagem(authMensagem, 'Cadastro realizado com sucesso! Redirecionando…', 'sucesso');
+        formRegistro.reset();
+        setTimeout(() => {
+          window.location.href = '/perfil';
+        }, 800);
+      } catch (err) {
+        mostrarMensagem(authMensagem, err.message, 'erro');
       }
-
-      const usuario = {
-        nome,
-        email,
-        senha,
-        igreja,
-        idade: idade ? Number(idade) : null,
-        cargo,
-        avatar: usuarioExistente?.avatar || null
-      };
-
-      salvarUsuario(usuario);
-      criarSessao(usuario.email);
-      mostrarMensagem(authMensagem, 'Cadastro realizado com sucesso! Redirecionando…', 'sucesso');
-      formRegistro.reset();
-      setTimeout(() => {
-        window.location.href = '/perfil';
-      }, 800);
     });
   }
 
@@ -116,17 +87,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const perfilMensagem = document.getElementById('perfil-mensagem');
   const formPerfil = document.getElementById('form-perfil');
   if (formPerfil) {
-    // Protege rota
-    redirecionarSeNaoLogado();
-
-    const usuario = obterUsuario();
-    const sessao = obterSessaoAtual();
-    if (!usuario || !sessao || usuario.email !== sessao) {
-      destruirSessao();
-      window.location.href = '/login';
-      return;
-    }
-
     const inputNome = document.getElementById('perfil-nome');
     const inputEmail = document.getElementById('perfil-email');
     const inputIgreja = document.getElementById('perfil-igreja');
@@ -140,6 +100,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const nomeResumo = document.getElementById('perfil-nome-resumo');
     const igrejaResumo = document.getElementById('perfil-igreja-resumo');
     const cargoResumo = document.getElementById('perfil-cargo-resumo');
+
+    async function carregarPerfil() {
+      try {
+        const u = await api('/api/auth/me', { method: 'GET' });
+        preencherCampos(u);
+      } catch {
+        window.location.href = '/login';
+      }
+    }
 
     function preencherCampos(u) {
       inputNome.value = u.nome || '';
@@ -158,63 +127,75 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    preencherCampos(usuario);
+    carregarPerfil();
 
     if (inputFoto) {
       inputFoto.addEventListener('change', function () {
         const file = inputFoto.files && inputFoto.files[0];
         if (!file) return;
         const reader = new FileReader();
-        reader.onload = function (e) {
+        reader.onload = async function (e) {
           const dataUrl = e.target.result;
-          avatarImg.src = dataUrl;
-          const u = obterUsuario();
-          if (!u) return;
-          u.avatar = dataUrl;
-          salvarUsuario(u);
-          mostrarMensagem(perfilMensagem, 'Foto de perfil atualizada.', 'sucesso');
+          try {
+            await api('/api/auth/me', {
+              method: 'PUT',
+              body: JSON.stringify({ avatar: dataUrl })
+            });
+            avatarImg.src = dataUrl;
+            mostrarMensagem(perfilMensagem, 'Foto de perfil atualizada.', 'sucesso');
+          } catch (err) {
+            mostrarMensagem(perfilMensagem, err.message, 'erro');
+          }
         };
         reader.readAsDataURL(file);
       });
     }
 
-    formPerfil.addEventListener('submit', function (e) {
+    formPerfil.addEventListener('submit', async function (e) {
       e.preventDefault();
-      const u = obterUsuario();
-      if (!u) return;
-
-      u.nome = inputNome.value.trim();
-      u.igreja = inputIgreja.value.trim();
-      u.idade = inputIdade.value ? Number(inputIdade.value) : null;
-      u.cargo = inputCargo.value.trim();
-
       const senhaAtual = inputSenhaAtual.value;
       const senhaNova = inputSenhaNova.value;
 
-      if (senhaNova) {
-        if (!senhaAtual || senhaAtual !== u.senha) {
-          mostrarMensagem(perfilMensagem, 'Para alterar a senha, informe a senha atual corretamente.', 'erro');
-          return;
-        }
-        if (senhaNova.length < 4) {
-          mostrarMensagem(perfilMensagem, 'A nova senha deve ter pelo menos 4 caracteres.', 'erro');
-          return;
-        }
-        u.senha = senhaNova;
+      if (senhaNova && senhaNova.length < 4) {
+        mostrarMensagem(perfilMensagem, 'A nova senha deve ter pelo menos 4 caracteres.', 'erro');
+        return;
       }
 
-      salvarUsuario(u);
-      preencherCampos(u);
-      inputSenhaAtual.value = '';
-      inputSenhaNova.value = '';
+      try {
+        const payload = {
+          nome: inputNome.value.trim(),
+          igreja: inputIgreja.value.trim(),
+          idade: inputIdade.value ? Number(inputIdade.value) : null,
+          cargo: inputCargo.value.trim()
+        };
 
-      mostrarMensagem(perfilMensagem, 'Perfil atualizado com sucesso.', 'sucesso');
+        if (senhaNova) {
+          payload.senhaAtual = senhaAtual;
+          payload.senhaNova = senhaNova;
+        }
+
+        const resData = await api('/api/auth/me', {
+          method: 'PUT',
+          body: JSON.stringify(payload)
+        });
+
+        preencherCampos(resData.user);
+        inputSenhaAtual.value = '';
+        inputSenhaNova.value = '';
+        mostrarMensagem(perfilMensagem, 'Perfil atualizado com sucesso.', 'sucesso');
+      } catch (err) {
+        mostrarMensagem(perfilMensagem, err.message, 'erro');
+      }
     });
 
     const btnSair = document.getElementById('btn-sair');
     if (btnSair) {
-      btnSair.addEventListener('click', function () {
-        destruirSessao();
+      btnSair.addEventListener('click', async function () {
+        try {
+          await api('/api/auth/logout', { method: 'POST' });
+        } catch (err) {
+          // silencioso
+        }
         window.location.href = '/login';
       });
     }
