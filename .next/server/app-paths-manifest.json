@@ -1,0 +1,9 @@
+{
+  "/page": "app/page.js",
+  "/sobre/page": "app/sobre/page.js",
+  "/cultos/page": "app/cultos/page.js",
+  "/politica-de-privacidade/page": "app/politica-de-privacidade/page.js",
+  "/local/page": "app/local/page.js",
+  "/imagens/page": "app/imagens/page.js",
+  "/contato/page": "app/contato/page.js"
+}

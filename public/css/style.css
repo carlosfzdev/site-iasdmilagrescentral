@@ -1,12 +1,13 @@
 :root{
-  --bg:#f6f7fb;
-  --surface:#ffffff;
+  /* base dark blue theme */
+  --bg:#0a0e2d;
+  --surface:#1a1f44;
   --primary:#2563eb;
-  --primary-600:#2a6f9e;
+  --primary-600:#1e40af;
   --accent:#f59a23;
-  --muted:#6b7280;
-  --text:#0f172a;
-  --text-muted-darker: #475569;
+  --muted:#9aa3b1;
+  --text:#e0e6f6;
+  --text-muted-darker: #a0a8bb;
   --radius:14px;
   --shadow-1: 0 6px 20px rgba(18,24,40,0.06);
   --shadow-2: 0 10px 30px rgba(18,24,40,0.08);
@@ -84,15 +85,6 @@ body{
 
 #menu-alternar{display:none;background:transparent;border:0;font-size:1.25rem;cursor:pointer; color: var(--text);}
 
-#tema-alternar {
-  background: transparent;
-  border: 0;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: var(--text);
-  padding: 0.25rem;
-  border-radius: 8px;
-}
 
 .destaque{
   display:flex;align-items:center;gap:1.25rem;
@@ -317,179 +309,10 @@ main.container section a:hover {
   list-style: none;
 }
 
-.secao-auth, .secao-perfil {
-  background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 55%), var(--surface);
-  padding: 2.25rem 1.75rem;
-  border-radius: 24px;
-  box-shadow: var(--shadow-2);
-  border: 1px solid rgba(37, 99, 235, 0.06);
-}
+/* auth and profile sections removed since login functionality is gone */
 
 .texto-intro {
   margin: 0.35rem 0 1.75rem 0;
   color: var(--text-muted-darker);
   max-width: 560px;
-}
-
-.auth-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-
-.auth-col h2 {
-  font-size: 1.15rem;
-  margin-bottom: 0.65rem;
-}
-
-.auth-col form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.auth-col label,
-.secao-perfil label {
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.auth-col input,
-.secao-perfil input {
-  padding: 0.75rem 0.9rem;
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
-  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(248,250,252,0.9));
-  color: var(--text);
-  font-family: inherit;
-  font-size: 1rem;
-  transition: border-color .18s, box-shadow .18s, background .18s;
-}
-
-[data-theme="dark"] .auth-col input,
-[data-theme="dark"] .secao-perfil input {
-  border-color: #4b5563;
-  background: #020617;
-}
-
-.auth-col button,
-.secao-perfil button {
-  margin-top: 0.5rem;
-  padding: 0.8rem 1.4rem;
-  background: var(--primary);
-  color: #fff;
-  border: 0;
-  border-radius: 999px;
-  font-weight: 700;
-  cursor: pointer;
-  letter-spacing: 0.02em;
-  transition: background .2s, transform .12s, box-shadow .18s;
-  box-shadow: 0 10px 24px rgba(37,99,235,0.22);
-}
-
-.auth-col button:hover,
-.secao-perfil button:hover {
-  background: var(--primary-600);
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(37,99,235,0.28);
-}
-
-.auth-mensagem {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-}
-
-.auth-mensagem.sucesso {
-  color: #15803d;
-}
-
-.auth-mensagem.erro {
-  color: #b91c1c;
-}
-
-.perfil-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
-  gap: 2.25rem;
-  margin-top: 1.5rem;
-}
-
-.perfil-avatar-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.perfil-avatar {
-  width: 132px;
-  height: 132px;
-  border-radius: 999px;
-  object-fit: cover;
-  box-shadow: var(--shadow-2);
-}
-
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  border: 1px dashed rgba(37, 99, 235, 0.4);
-  font-size: 0.9rem;
-  cursor: pointer;
-  color: var(--primary-600);
-  background: rgba(37, 99, 235, 0.04);
-}
-
-[data-theme="dark"] .btn-ghost {
-  background: rgba(56, 189, 248, 0.08);
-  border-color: rgba(56, 189, 248, 0.5);
-}
-
-.perfil-info {
-  margin-top: 1rem;
-  text-align: center;
-  color: var(--text-muted-darker);
-}
-
-.perfil-nome-resumo {
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.perfil-igreja-resumo,
-.perfil-cargo-resumo {
-  font-size: 0.95rem;
-}
-
-.campo-ajuda {
-  display: block;
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-top: 0.1rem;
-  margin-bottom: 0.4rem;
-}
-
-.perfil-acoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  align-items: center;
-}
-
-.btn-secundario {
-  background: transparent;
-  color: var(--muted);
-  border: 1px solid #d1d5db;
-}
-
-[data-theme="dark"] .btn-secundario {
-  border-color: #4b5563;
-}
-
-@media (max-width: 768px) {
-  .perfil-layout {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }

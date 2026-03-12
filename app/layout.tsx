@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" data-theme="dark">
       <head>
         <meta name="theme-color" content="#2a6f9e" />
         <link
@@ -26,7 +26,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <Script src="/js/script.js" strategy="afterInteractive" />
-        <Script src="/js/auth.js" strategy="afterInteractive" />
       </body>
     </html>
   );

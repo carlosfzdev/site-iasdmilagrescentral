@@ -42,7 +42,7 @@ export function Header() {
               <Link href="/contato">Contato</Link>
             </li>
             <li>
-              <Link href="/login">Área do Membro</Link>
+              <Link href="/politica-de-privacidade">Política de Privacidade</Link>
             </li>
             <li>
               <a
@@ -55,9 +55,6 @@ export function Header() {
             </li>
           </ul>
         </nav>
-        <button id="tema-alternar" aria-label="Alternar tema">
-          🌙
-        </button>
       </div>
     </header>
   );

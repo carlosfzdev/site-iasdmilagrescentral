@@ -1,19 +1,23 @@
 import { Header } from './components/Header';
+import Image from 'next/image';
 
 export default function HomePage() {
   return (
     <>
       <Header />
       <main id="principal">
-        <section className="destaque revelar">
-          <img
+        <section className="destaque">
+          {/* using Next.js Image ensures the asset is served correctly */}
+          <Image
             src="/images/fotoigreja.png"
             alt="Fachada da igreja"
             className="destaque-imagem paralaxe"
             loading="lazy"
             draggable="false"
+            width={1200}
+            height={800}
           />
-          <div className="destaque-conteudo revelar" data-delay="120">
+          <div className="destaque-conteudo" data-delay="120">
             <h2>Bem-vindo à IASD Central-Milagres CE</h2>
             <p>Junte-se a nós nos cultos e atividades — todos são bem-vindos.</p>
             <a className="btn" href="/contato">
@@ -25,38 +29,33 @@ export default function HomePage() {
         <section className="grade-links container">
           <h2>Explore</h2>
           <div className="cartoes">
-            <a className="cartao revelar" href="/cultos" data-delay="80">
+            <a className="cartao" href="/cultos" data-delay="80">
               <span className="cartao-icone">🙏</span>
               <h3>Cultos</h3>
               <p className="cartao-subtitulo">Horários e informações</p>
             </a>
-            <a className="cartao revelar" href="/sobre" data-delay="160">
+            <a className="cartao" href="/sobre" data-delay="160">
               <span className="cartao-icone">⛪</span>
               <h3>Sobre Nós</h3>
               <p className="cartao-subtitulo">Nossa missão e história</p>
             </a>
-            <a className="cartao revelar" href="/local" data-delay="200">
+            <a className="cartao" href="/local" data-delay="200">
               <span className="cartao-icone">📍</span>
               <h3>Localização</h3>
               <p className="cartao-subtitulo">Encontre nossa igreja</p>
             </a>
-            <a className="cartao revelar" href="/imagens" data-delay="240">
+            <a className="cartao" href="/imagens" data-delay="240">
               <span className="cartao-icone">🖼️</span>
               <h3>Imagens</h3>
               <p className="cartao-subtitulo">Galeria de fotos</p>
             </a>
-            <a className="cartao revelar" href="/contato" data-delay="280">
+            <a className="cartao" href="/contato" data-delay="280">
               <span className="cartao-icone">✉️</span>
               <h3>Contato</h3>
               <p className="cartao-subtitulo">Fale conosco</p>
             </a>
-            <a className="cartao revelar" href="/login" data-delay="300">
-              <span className="cartao-icone">🙋</span>
-              <h3>Área do Membro</h3>
-              <p className="cartao-subtitulo">Acesse e edite seu perfil</p>
-            </a>
             <a
-              className="cartao revelar"
+              className="cartao"
               href="https://giving.7me.app/guest-donation/church/698ead37-327b-4888-be88-ed64d2495e3e"
               target="_blank"
               rel="noopener noreferrer"
@@ -69,7 +68,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="secao-doacoes container revelar" data-delay="360">
+        <section className="secao-doacoes container" data-delay="360">
           <img
             src="https://giving.7me.app/assets/images/logo.png"
             alt="7me Giving Logo"
@@ -95,7 +94,7 @@ export default function HomePage() {
         <div className="container">
           <p>&copy; 2026 IASD Central Milagres — Todos os direitos reservados.</p>
           <p>
-            <a href="/sobre">Política de Privacidade</a>
+            <a href="/politica-de-privacidade">Política de Privacidade</a>
           </p>
         </div>
       </footer>

@@ -1,7 +1,7 @@
 {
   "name": "iasd-milagres-site",
   "version": "1.0.0",
-  "description": "Site IASD Milagres Central com área de membros (login/perfil) usando Next.js.",
+  "description": "Site IASD Milagres Central em Next.js com tema escuro azul.",
   "main": "next.config.mjs",
   "scripts": {
     "dev": "next dev",
